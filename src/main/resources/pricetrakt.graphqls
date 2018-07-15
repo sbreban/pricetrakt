@@ -2,3 +2,24 @@ type Query {
     # The API Version
     version: String!
 }
+
+type Product {
+    id: ID!
+    name: String!
+    shopEntries: [ShopEntry]!
+}
+
+type Shop {
+    id: ID!
+    name: String!
+}
+
+type ShopEntry {
+    productId: String!
+    shopId: String!
+    price: Int!
+}
+
+extend type Query {
+    getProductById(id: ID!) : Product
+}
