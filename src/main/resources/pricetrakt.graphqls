@@ -7,6 +7,12 @@ type Product {
     id: ID!
     name: String!
     shopEntries: [ShopEntry]!
+    prices: [Price]!
+}
+
+type Price {
+    price: Float!
+    currency: String!
 }
 
 type Shop {
@@ -17,7 +23,7 @@ type Shop {
 type ShopEntry {
     productId: String!
     shopId: String!
-    price: Int!
+    url: String!
 }
 
 extend type Query {

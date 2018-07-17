@@ -26,6 +26,7 @@
         <graphiql-spring-boot.version>4.0.0</graphiql-spring-boot.version>
         <graphql-spring-boot.version>4.0.0</graphql-spring-boot.version>
         <graphql-java-tools.version>4.3.0</graphql-java-tools.version>
+        <jsoup.version>1.11.3</jsoup.version>
     </properties>
 
 	<dependencies>
@@ -80,6 +81,12 @@
 			<artifactId>graphql-spring-boot-starter</artifactId>
 			<version>${graphql-spring-boot.version}</version>
 		</dependency>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
 
 	</dependencies>
 

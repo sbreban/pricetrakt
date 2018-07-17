@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component
 @Component
 class ProductResolver(private val shopEntryDAO: ShopEntryDAO) : GraphQLResolver<Product> {
   fun shopEntries(product: Product) = shopEntryDAO.getEntriesForProduct(product.id)
+  fun prices(product: Product) = shopEntryDAO.getPricesForProduct(product.id)
 }

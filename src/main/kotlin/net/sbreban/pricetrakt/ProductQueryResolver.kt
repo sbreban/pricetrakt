@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class ProductQueryResolver(
-        private val productDAO: ProductDAO
+    private val productDAO: ProductDAO
 ) : GraphQLQueryResolver {
   fun getProductById(id: String) = productDAO.getProductById(id)
 }
