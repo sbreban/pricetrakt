@@ -6,7 +6,7 @@ data class Price(
 ) {
   companion object {
     fun genericPrice(): Price {
-      return Price(price = 23.0, currency = "Lei")
+      return Price(price = 0.0, currency = "Lei")
     }
   }
 }

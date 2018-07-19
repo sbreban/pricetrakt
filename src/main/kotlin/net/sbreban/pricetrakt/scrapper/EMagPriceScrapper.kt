@@ -7,11 +7,12 @@ class EMagPriceScrapper : PriceScrapper {
   override fun getPrice(document: Document): Price {
     var price = Price.genericPrice()
 
-    val first = document.select(".product-page-pricing > p:nth-child(2)").first()
-    val priceString = first.wholeText().trim()
-    val priceComponents = priceString.split(" ")
-    if (priceComponents.size == 2) {
-      price = Price(price = priceComponents[0].toDouble(), currency = priceComponents[1])
+    val first = document.select(".product-new-price").first()
+
+    if (first != null) {
+      val priceValue = first.childNode(0).outerHtml().trim()
+      val priceCurrency = first.childNode(3).childNode(0).outerHtml().trim()
+      price = Price(price = priceValue.toDouble(), currency = priceCurrency)
     }
 
     return price
