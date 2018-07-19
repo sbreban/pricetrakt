@@ -2,6 +2,7 @@ package net.sbreban.pricetrakt.dao
 
 import net.sbreban.pricetrakt.model.Price
 import net.sbreban.pricetrakt.model.ShopEntry
+import net.sbreban.pricetrakt.scrapper.PriceScrapper
 import org.jsoup.Jsoup
 import org.springframework.stereotype.Component
 
@@ -21,23 +22,10 @@ class ShopEntryDAO {
     val entriesForProduct = getEntriesForProduct(productId)
     val prices = mutableListOf<Price>()
     entriesForProduct.forEach {
-      var price = Price(price = 23.0, currency = "Lei")
+      var price = Price.genericPrice()
       Jsoup.connect(it.url).get().run {
-        if (it.url.contains("emag")) {
-          val first = select(".product-page-pricing > p:nth-child(2)").first()
-          val priceString = first.wholeText().trim()
-          val priceComponents = priceString.split(" ")
-          if (priceComponents.size == 2) {
-            price = Price(price = priceComponents[0].toDouble(), currency = priceComponents[1])
-          }
-        } else if (it.url.contains("pcgarage")) {
-          val first = select(".ps-sell-price > span:nth-child(2)").first()
-          val priceString = first.wholeText().trim()
-          val priceComponents = priceString.split(" ")
-          if (priceComponents.size == 2) {
-            price = Price(price = priceComponents[0].replace(",", "").toDouble(), currency = priceComponents[1])
-          }
-        }
+        val priceScrapper = PriceScrapper.getPriceScrapper(it.url)
+        price = priceScrapper.getPrice(this)
       }
       prices.add(price)
     }
