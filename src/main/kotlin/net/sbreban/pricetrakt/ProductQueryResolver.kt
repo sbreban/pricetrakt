@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component
 class ProductQueryResolver(
     private val productDAO: ProductDAO
 ) : GraphQLQueryResolver {
-  fun getProductById(id: String) = productDAO.getProductById(id)
+  fun getProductById(id: Int) = productDAO.getOne(id)
 }

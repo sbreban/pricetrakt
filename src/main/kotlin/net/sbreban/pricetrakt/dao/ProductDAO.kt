@@ -1,15 +1,8 @@
 package net.sbreban.pricetrakt.dao
 
 import net.sbreban.pricetrakt.model.Product
-import org.springframework.stereotype.Component
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
-@Component
-class ProductDAO {
-  private val data = mutableListOf(
-      Product(id = "v30", name = "LG V30"),
-      Product(id = "7plus", name = "Nokia 7 Plus"),
-      Product(id = "p20lite", name = "Huawei P20 Lite")
-  )
-
-  fun getProductById(id: String) = data.firstOrNull { product -> product.id == id }
-}
+@Repository
+interface ProductDAO : JpaRepository<Product, Int>

@@ -1,6 +1,6 @@
 package net.sbreban.pricetrakt.model
 
 data class Shop(
-    val id: String,
+    val id: Int,
     val name: String
 )

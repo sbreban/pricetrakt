@@ -21,8 +21,8 @@ type Shop {
 }
 
 type ShopEntry {
-    productId: String!
-    shopId: String!
+    productId: Int!
+    shopId: Int!
     url: String!
 }
 
