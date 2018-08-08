@@ -10,5 +10,8 @@ data class Product(
     val id: Int = 0,
 
     @get: NotBlank
-    val name: String = ""
+    val name: String = "",
+
+    @OneToMany
+    val shopEntries: List<ShopEntry> = mutableListOf()
 )
