@@ -9,15 +9,13 @@ data class ShopEntry(
     @Id
     val id: Int = 0,
 
-    @Column(name = "product_id")
-    val productId: Int = 0,
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "shop_id")
+    val shop: Shop = Shop(),
 
-    @Id
-    @Column(name = "shop_id")
-    val shopId: Int = 0,
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    val product: Product = Product(),
 
-    val url: String = "",
-
-    @ManyToOne
-    val product: Product = Product()
+    val url: String = ""
 )

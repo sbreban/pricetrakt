@@ -1,17 +1,18 @@
 package net.sbreban.pricetrakt.model
 
-import org.hibernate.validator.constraints.NotBlank
 import javax.persistence.*
+import javax.persistence.FetchType
+
+
 
 @Entity
 @Table(name = "products")
 data class Product(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     val id: Int = 0,
 
-    @get: NotBlank
     val name: String = "",
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     val shopEntries: List<ShopEntry> = mutableListOf()
 )
