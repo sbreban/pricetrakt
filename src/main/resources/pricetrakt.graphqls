@@ -36,4 +36,5 @@ type ShopEntry {
 extend type Query {
     getProductById(id: ID!): Product
     getProductByName(name: String!): Product
+    getAllProducts: [Product]
 }
