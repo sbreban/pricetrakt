@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document
 
 class PCGaragePriceScrapper : PriceScrapper {
   override fun getPrice(document: Document): List<Price> {
-    var price = Price.genericPrice()
+    var price = Price()
 
     val priceElement = document.select(".ps-sell-price").first()
 

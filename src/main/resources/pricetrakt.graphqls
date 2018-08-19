@@ -13,6 +13,12 @@ type Product {
 type Price {
     price: Float!
     currency: String!
+    state: ProductState!
+}
+
+enum ProductState {
+    NEW
+    RESEALED
 }
 
 type Shop {
@@ -28,5 +34,6 @@ type ShopEntry {
 }
 
 extend type Query {
-    getProductById(id: ID!) : Product
+    getProductById(id: ID!): Product
+    getProductByName(name: String!): Product
 }

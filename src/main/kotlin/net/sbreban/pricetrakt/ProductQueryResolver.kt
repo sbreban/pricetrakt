@@ -9,4 +9,5 @@ class ProductQueryResolver(
     private val productDAO: ProductDAO
 ) : GraphQLQueryResolver {
   fun getProductById(id: Int) = productDAO.getOne(id)
+  fun getProductByName(name: String) = productDAO.findByName(name)
 }
