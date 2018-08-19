@@ -4,7 +4,7 @@ import net.sbreban.pricetrakt.model.Price
 import org.jsoup.nodes.Document
 
 class PCGaragePriceScrapper : PriceScrapper {
-  override fun getPrice(document: Document): Price {
+  override fun getPrice(document: Document): List<Price> {
     var price = Price.genericPrice()
 
     val priceElement = document.select(".ps-sell-price").first()
@@ -19,6 +19,6 @@ class PCGaragePriceScrapper : PriceScrapper {
       price = Price(price = priceValue, currency = priceCurrency)
     }
 
-    return price
+    return mutableListOf(price)
   }
 }

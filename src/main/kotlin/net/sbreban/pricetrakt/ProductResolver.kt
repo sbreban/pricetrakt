@@ -18,12 +18,10 @@ class ProductResolver(private val productDAO: ProductDAO) : GraphQLResolver<Prod
     val entriesForProduct = getEntriesForProduct(productId)
     val prices = mutableListOf<Price>()
     entriesForProduct.forEach {
-      var price = Price.genericPrice()
       Jsoup.connect(it.url).get().run {
         val priceScrapper = PriceScrapper.getPriceScrapper(it.url)
-        price = priceScrapper.getPrice(this)
+        prices.addAll(priceScrapper.getPrice(this))
       }
-      prices.add(price)
     }
     return prices
   }

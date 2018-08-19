@@ -4,7 +4,7 @@ import net.sbreban.pricetrakt.model.Price
 import org.jsoup.nodes.Document
 
 interface PriceScrapper {
-  fun getPrice(document: Document): Price
+  fun getPrice(document: Document): List<Price>
 
   companion object {
     fun getPriceScrapper(shop: String): PriceScrapper {
