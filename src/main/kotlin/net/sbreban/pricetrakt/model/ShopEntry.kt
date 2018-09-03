@@ -17,5 +17,8 @@ data class ShopEntry(
     @JoinColumn(name = "product_id")
     val product: Product = Product(),
 
-    val url: String = ""
+    val url: String = "",
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "shopEntry")
+    val priceHistory: List<PriceHistory> = mutableListOf()
 )
