@@ -12,6 +12,8 @@ interface PriceScrapper {
         return EMagPriceScrapper()
       } else if (shop.contains("pcgarage")) {
         return PCGaragePriceScrapper()
+      } else if (shop.contains("avstore")) {
+        return AVStorePriceScrapper()
       }
       return GenericScrapper()
     }
