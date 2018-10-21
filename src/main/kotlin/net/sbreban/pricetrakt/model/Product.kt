@@ -9,10 +9,11 @@ import javax.persistence.FetchType
 @Table(name = "products")
 data class Product(
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int = 0,
 
     val name: String = "",
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-    val shopEntries: List<ShopEntry> = mutableListOf()
+    val shopEntries: MutableList<ShopEntry> = mutableListOf()
 )

@@ -7,6 +7,7 @@ import javax.persistence.*
 data class ShopEntry(
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int = 0,
 
     @ManyToOne(fetch = FetchType.EAGER)
