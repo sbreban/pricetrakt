@@ -41,7 +41,5 @@ type PriceHistory {
 }
 
 extend type Query {
-    getProductById(id: ID!): Product
-    getProductByName(name: String!): Product
-    getAllProducts: [Product]
+    products(id: ID!): [Product]
 }

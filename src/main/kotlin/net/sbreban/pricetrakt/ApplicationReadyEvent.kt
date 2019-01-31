@@ -9,6 +9,6 @@ class ApplicationReadyEventListener(private val excelDataLoader: ExcelDataLoader
 
   override fun onApplicationEvent(event: ApplicationReadyEvent) {
     println("onApplicationEvent")
-    excelDataLoader.extractExcelFile("/home/sbreban/Nextcloud/Documents/sheets/LongTermShopping.xlsx")
+    excelDataLoader.extractExcelFile("database.xlsx")
   }
 }
