@@ -9,6 +9,6 @@ class ApplicationReadyEventListener(private val excelDataLoader: ExcelDataLoader
 
   override fun onApplicationEvent(event: ApplicationReadyEvent) {
     println("onApplicationEvent")
-    excelDataLoader.extractExcelFile("database.xlsx")
+    excelDataLoader.extractExcelFile("classpath:LongTermShopping.xlsx")
   }
 }

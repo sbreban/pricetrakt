@@ -9,14 +9,13 @@ import net.sbreban.pricetrakt.model.ShopEntry
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import org.springframework.core.io.ClassPathResource
 import org.springframework.stereotype.Component
-import java.io.File
-import java.io.FileInputStream
 
 @Component
 class ExcelDataLoader(val productDAO: ProductDAO, val shopDAO: ShopDAO, val shopEntryDAO: ShopEntryDAO) {
   fun extractExcelFile(fileName: String) {
-    val excelFile = FileInputStream(File(fileName))
+    val excelFile = ClassPathResource(fileName).inputStream
     val workbook = XSSFWorkbook(excelFile)
 
     val sheet = workbook.getSheet("Hardware")
