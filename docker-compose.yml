@@ -14,7 +14,7 @@ services:
     ports:
       - 3306:3306
   pricetrakt-app:
-    image: pricetrakt
+    image: pricetrakt/pricetrakt
     build:
       context: ./
       dockerfile: Dockerfile
