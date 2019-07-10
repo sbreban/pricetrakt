@@ -3,7 +3,6 @@ version: '3.1'
 services:
 
   pricetrakt-db:
-    hostname: pricetrakt-db
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -11,14 +10,22 @@ services:
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: sesame
       MYSQL_DATABASE: pricetrakt
-    ports:
-      - 3306:3306
+    networks:
+      pricetrakt_network:
+
   pricetrakt-app:
     image: pricetrakt/pricetrakt
     build:
       context: ./
       dockerfile: Dockerfile
-    depends_on:
-      - pricetrakt-db
     ports:
       - 8080:8080
+    environment:
+      DB_HOST: pricetrakt-db
+      XLSX_PATH: classpath:database.xlsx
+    networks:
+      pricetrakt_network:
+
+networks:
+  pricetrakt_network:
+    external: false

@@ -9,6 +9,7 @@ class ApplicationReadyEventListener(private val excelDataLoader: ExcelDataLoader
 
   override fun onApplicationEvent(event: ApplicationReadyEvent) {
     println("onApplicationEvent")
-    excelDataLoader.extractExcelFile("classpath:database.xlsx")
+    val fileName: String = System.getenv("XLSX_PATH") ?: ""
+    excelDataLoader.extractExcelFile(fileName)
   }
 }
