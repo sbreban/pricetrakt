@@ -20,5 +20,5 @@ data class ShopEntry(
     val url: String = "",
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "shopEntry")
-    val prices: List<Price> = mutableListOf()
+    val prices: MutableList<Price> = mutableListOf()
 )

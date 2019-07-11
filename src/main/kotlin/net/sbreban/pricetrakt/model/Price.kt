@@ -20,5 +20,5 @@ data class Price(
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "shop_entry_id")
-    val shopEntry: ShopEntry = ShopEntry()
+    var shopEntry: ShopEntry = ShopEntry()
 )
