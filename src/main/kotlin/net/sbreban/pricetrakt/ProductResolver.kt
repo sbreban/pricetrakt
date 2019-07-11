@@ -2,6 +2,7 @@ package net.sbreban.pricetrakt
 
 import com.coxautodev.graphql.tools.GraphQLResolver
 import net.sbreban.pricetrakt.dao.ProductDAO
+import net.sbreban.pricetrakt.dao.ShopEntryDAO
 import net.sbreban.pricetrakt.model.Price
 import net.sbreban.pricetrakt.model.Product
 import net.sbreban.pricetrakt.scrapper.PriceScrapper
@@ -9,7 +10,8 @@ import org.jsoup.Jsoup
 import org.springframework.stereotype.Component
 
 @Component
-class ProductResolver(private val productDAO: ProductDAO) : GraphQLResolver<Product> {
+class ProductResolver(private val productDAO: ProductDAO
+) : GraphQLResolver<Product> {
 
   fun getEntriesForProduct(productId: Int) =
       productDAO.getOne(productId).shopEntries

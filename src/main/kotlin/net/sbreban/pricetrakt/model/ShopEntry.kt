@@ -5,7 +5,6 @@ import javax.persistence.*
 @Entity
 @Table(name = "shop_entries")
 data class ShopEntry(
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int = 0,
@@ -21,5 +20,5 @@ data class ShopEntry(
     val url: String = "",
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "shopEntry")
-    val priceHistory: List<PriceHistory> = mutableListOf()
+    val prices: List<Price> = mutableListOf()
 )

@@ -31,13 +31,7 @@ type ShopEntry {
     shop: Shop!
     product: Product!
     url: String!
-    priceHistory: [PriceHistory]!
-}
-
-type PriceHistory {
-    id: ID!,
-    price: Float!
-    currency: String!
+    prices: [Price]!
 }
 
 extend type Query {
