@@ -7,13 +7,13 @@ type Product {
     id: ID!
     name: String!
     shopEntries: [ShopEntry]!
-    prices: [Price]!
 }
 
 type Price {
     price: Float!
     currency: String!
     state: ProductState!
+    captureTime: String!
 }
 
 enum ProductState {
