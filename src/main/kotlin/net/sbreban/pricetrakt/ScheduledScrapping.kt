@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class ScheduledScrapping(private val scrapperRunner: ScrapperRunner) {
 
-  @Scheduled(fixedDelay = 30 * 60 * 1000)
+  @Scheduled(fixedDelay = 60 * 60 * 1000, initialDelay = 60 * 60 * 1000)
   fun scrap() {
     scrapperRunner.run()
     val now = System.currentTimeMillis() / 1000

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ProductDAO : JpaRepository<Product, Int> {
-
   @Query("SELECT p FROM Product p WHERE p.name = :name")
-  fun findByName(@Param("name") name: String): Product
+  fun findByName(@Param("name") name: String): Product?
 }

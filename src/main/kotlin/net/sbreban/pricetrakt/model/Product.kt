@@ -12,6 +12,11 @@ data class Product(
 
     val name: String = "",
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product", orphanRemoval = true)
     val shopEntries: MutableList<ShopEntry> = mutableListOf()
-)
+) {
+  fun addShopEntry(shopEntry: ShopEntry) {
+    shopEntry.product = this
+    shopEntries.add(shopEntry)
+  }
+}

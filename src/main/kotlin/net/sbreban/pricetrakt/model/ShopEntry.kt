@@ -15,10 +15,15 @@ data class ShopEntry(
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
-    val product: Product = Product(),
+    var product: Product = Product(),
 
     val url: String = "",
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "shopEntry")
     val prices: MutableList<Price> = mutableListOf()
-)
+) {
+  fun addPrice(price: Price) {
+    price.shopEntry = this
+    prices.add(price)
+  }
+}

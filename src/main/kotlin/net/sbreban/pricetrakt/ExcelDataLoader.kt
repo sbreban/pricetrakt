@@ -28,30 +28,51 @@ class ExcelDataLoader(val productDAO: ProductDAO, val shopDAO: ShopDAO, val shop
         val productCell = currentRow.getCell(0)
         if (cellNotBlank(productCell)) {
           val productName = productCell.stringCellValue
-          product = Product(name = productName)
-          product = productDAO.saveAndFlush(product)
-          println("Inserted product with name: $productName, id: ${product.id}")
+          product = getOrInsertProduct(productName)
         }
         val shopCell = currentRow.getCell(1)
         val urlCell = currentRow.getCell(2)
         if (cellNotBlank(shopCell) && cellNotBlank(urlCell) && product != null && product.id != 0) {
           val shopName = shopCell.stringCellValue
-          var shop = shopDAO.findByName(shopName)
-          if (shop == null) {
-            shop = Shop(name = shopName)
-            shop = shopDAO.saveAndFlush(shop)
-            println("Inserted shop with name: $shopName, id: ${shop.id}")
-          }
+          val shop = findOrInsertShop(shopName)
           val url = urlCell.stringCellValue
-          val shopEntry = ShopEntry(shop = shop!!, product = product, url = url)
-          shopEntryDAO.saveAndFlush(shopEntry)
-          println("Url for product $product on $shop: $url")
+          findOrInsertShopEntry(url, shop, product)
         }
       }
     }
 
     workbook.close()
     excelFile.close()
+  }
+
+  private fun findOrInsertShopEntry(url: String, shop: Shop?, product: Product) {
+    var shopEntry = shopEntryDAO.findByUrl(url)
+    if (shopEntry == null) {
+      shopEntry = ShopEntry(shop = shop!!, url = url)
+      product.addShopEntry(shopEntry)
+      shopEntryDAO.saveAndFlush(shopEntry)
+      println("Inserted shop entry for product: ${product.name}, url: ${shopEntry.url}")
+    }
+  }
+
+  private fun findOrInsertShop(shopName: String): Shop? {
+    var shop = shopDAO.findByName(shopName)
+    if (shop == null) {
+      shop = Shop(name = shopName)
+      shop = shopDAO.saveAndFlush(shop)
+      println("Inserted shop with name: $shopName, id: ${shop.id}")
+    }
+    return shop
+  }
+
+  private fun getOrInsertProduct(productName: String): Product? {
+    var product: Product? = productDAO.findByName(productName)
+    if (product == null) {
+      product = Product(name = productName)
+      product = productDAO.saveAndFlush(product)
+      println("Inserted product with name: $productName, id: ${product.id}")
+    }
+    return product
   }
 
   private fun cellNotBlank(cell: Cell?) = cell != null && cell.cellType != CellType.BLANK

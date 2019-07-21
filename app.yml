@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  pricetrakt-app:
+    image: pricetrakt/pricetrakt
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      DB_HOST: pricetrakt-db
+      XLSX_PATH: classpath:database.xlsx
+    networks:
+      pricetrakt_network:
+
+networks:
+  pricetrakt_network:
+    external: false
