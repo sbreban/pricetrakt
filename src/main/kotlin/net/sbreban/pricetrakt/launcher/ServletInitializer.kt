@@ -1,5 +1,6 @@
-package net.sbreban.pricetrakt
+package net.sbreban.pricetrakt.launcher
 
+import net.sbreban.pricetrakt.PricetraktApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 

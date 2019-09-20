@@ -1,5 +1,6 @@
-package net.sbreban.pricetrakt
+package net.sbreban.pricetrakt.launcher
 
+import net.sbreban.pricetrakt.loader.ExcelDataLoader
 import net.sbreban.pricetrakt.scrapper.ScrapperRunner
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.ApplicationListener

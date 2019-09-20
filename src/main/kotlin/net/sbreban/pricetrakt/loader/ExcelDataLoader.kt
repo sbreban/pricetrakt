@@ -1,4 +1,4 @@
-package net.sbreban.pricetrakt
+package net.sbreban.pricetrakt.loader
 
 import net.sbreban.pricetrakt.dao.ProductDAO
 import net.sbreban.pricetrakt.dao.ShopDAO

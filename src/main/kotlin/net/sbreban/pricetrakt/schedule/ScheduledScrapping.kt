@@ -1,4 +1,4 @@
-package net.sbreban.pricetrakt
+package net.sbreban.pricetrakt.schedule
 
 import net.sbreban.pricetrakt.scrapper.ScrapperRunner
 import org.springframework.scheduling.annotation.Scheduled
