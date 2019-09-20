@@ -14,19 +14,20 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.14.RELEASE</version>
+		<version>LATEST</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.9</java.version>
-		<kotlin.version>1.2.51</kotlin.version>
-        <graphiql-spring-boot.version>4.0.0</graphiql-spring-boot.version>
-        <graphql-spring-boot.version>4.0.0</graphql-spring-boot.version>
-        <graphql-java-tools.version>4.3.0</graphql-java-tools.version>
-        <jsoup.version>1.11.3</jsoup.version>
+		<java.version>1.12</java.version>
+		<kotlin.version>LATEST</kotlin.version>
+        <graphiql-spring-boot.version>LATEST</graphiql-spring-boot.version>
+        <graphql-spring-boot.version>LATEST</graphql-spring-boot.version>
+        <graphql-java-tools.version>LATEST</graphql-java-tools.version>
+        <jsoup.version>LATEST</jsoup.version>
+        <poi-ooxml.version>LATEST</poi-ooxml.version>
         <docker.image.prefix>pricetrakt</docker.image.prefix>
     </properties>
 
@@ -103,7 +104,7 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>4.0.0</version>
+            <version>${poi-ooxml.version}</version>
         </dependency>
 
 	</dependencies>
