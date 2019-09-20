@@ -10,12 +10,14 @@ class ProductQueryResolver(
     private val productDAO: ProductDAO
 ) : GraphQLQueryResolver {
   fun products(id: Int): List<Product> {
-    val products: List<Product>
     if (id <= 0) {
-      products = productDAO.findAll()
+      return productDAO.findAll()
     } else {
-      products = listOf(productDAO.getOne(id))
+      val product = productDAO.findAll().findLast { product -> product.id == id }
+      if (product != null) {
+        return listOf(product)
+      }
     }
-    return products
+    return emptyList()
   }
 }
