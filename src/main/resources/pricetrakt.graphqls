@@ -36,4 +36,5 @@ type ShopEntry {
 
 extend type Query {
     products(id: ID!): [Product]
+    shops(id: ID!): [Shop]
 }

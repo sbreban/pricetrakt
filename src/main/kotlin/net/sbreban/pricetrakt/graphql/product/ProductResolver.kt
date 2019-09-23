@@ -1,4 +1,4 @@
-package net.sbreban.pricetrakt.graphql
+package net.sbreban.pricetrakt.graphql.product
 
 import com.coxautodev.graphql.tools.GraphQLResolver
 import net.sbreban.pricetrakt.model.Product

@@ -1,4 +1,4 @@
-package net.sbreban.pricetrakt.graphql
+package net.sbreban.pricetrakt.graphql.product
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import net.sbreban.pricetrakt.dao.ProductDAO

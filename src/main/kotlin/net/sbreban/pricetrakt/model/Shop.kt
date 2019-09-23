@@ -9,5 +9,8 @@ data class Shop(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int = 0,
 
-    val name: String = ""
+    val name: String = "",
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "shop", orphanRemoval = true)
+    val shopEntries: MutableList<ShopEntry> = mutableListOf()
 )
