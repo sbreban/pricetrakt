@@ -4,9 +4,19 @@ pipeline {
         maven 'MAVEN'
     }
     stages {
-        stage ('Build') {
+        stage('Build') {
             steps {
-                sh 'mvn -D clean package'
+                echo 'mvn -D clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
