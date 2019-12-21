@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 @EnableScheduling
-class PricetraktApplication
+open class PricetraktApplication
 
 fun main(args: Array<String>) {
   println("Starting application...")
